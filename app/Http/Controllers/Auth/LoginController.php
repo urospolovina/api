@@ -16,4 +16,11 @@ class LoginController extends Controller
             throw new AuthenticationException();
         }
     }
+
+    public function me(Request $request)
+    {
+    return response()->json([
+        'data' => $request->user(),
+    ]);
+    }
 }
