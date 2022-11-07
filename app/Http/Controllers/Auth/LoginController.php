@@ -21,8 +21,7 @@ class LoginController extends Controller
       $credentials = $request->only('email', 'password');
       
       if (Auth::attempt($credentials)) {
-        // return response()->json(Auth::user(), 200);
-        return Auth::user();
+        return response()->json(Auth::user(), 200);
       }
   
       throw ValidationException::withMessages([
