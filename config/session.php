@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('https://jadimloh.herokuapp.com'),
+    'domain' => env('.jadimloh.herokuapp.com'),
 
     /*
     |--------------------------------------------------------------------------
