@@ -2,25 +2,31 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
 
-
     public function selja(Request $request)
     {
-        if (!auth()->attempt($request->only('email', 'password'))){
-            throw new AuthenticationException();
-        }
-    }
-
-    public function me(Request $request)
-    {
-    return response()->json([
-        'data' => $request->user(),
-    ]);
+      $request->validate([
+        'email' => ['required', 'email'],
+        'password' => 'required'
+      ]);
+  
+      $credentials = $request->only('email', 'password');
+      return response('Hello World', 200);
+      if (Auth::attempt($credentials)) {
+        return response()->json(Auth::user(), 200);
+      }
+  
+      throw ValidationException::withMessages([
+        'email' => 'The provided credentails are incorect.'
+      ]);
+  
     }
 }
