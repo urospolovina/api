@@ -16,7 +16,7 @@ return [
     */
 
     'stateful' => [
-        '.jadimloh.herokuapp.com',
+        'https://jadimloh.herokuapp.com',
     ],
 
     /*
