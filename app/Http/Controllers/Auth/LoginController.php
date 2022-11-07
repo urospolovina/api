@@ -19,9 +19,10 @@ class LoginController extends Controller
       ]);
   
       $credentials = $request->only('email', 'password');
-      return response('Hello World', 200);
+      
       if (Auth::attempt($credentials)) {
         return response()->json(Auth::user(), 200);
+        return response('seljaak ovo ne radii', 200);
       }
   
       throw ValidationException::withMessages([
