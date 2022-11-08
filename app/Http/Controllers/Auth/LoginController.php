@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
 
-    public function selja(Request $request)
+    public function selja (Request $request)
     {
       $request->validate([
         'email' => ['required', 'email'],
